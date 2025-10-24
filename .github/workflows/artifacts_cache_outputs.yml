@@ -27,7 +27,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-
+      script-file: ${{steps.Publish.outputs.script-file}}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -54,8 +54,8 @@ jobs:
     steps:
       - name: GET_BUILD-ARTIFACTS
         uses: actions/download-artifact@v5
-          with:
-            name: dist-files
+        with:
+          name: dist-files
       - name: Output contents
         run: ls
       - name: Output_FileName
